@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { View, Animated } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -7,12 +8,25 @@ import { StatusBar } from 'expo-status-bar';
 import Home from './src/screens/Home';
 import CreateNote from './src/screens/CreateNote';
 import Settings from './src/screens/Settings';
-import NoteView from "./src/screens/NoteView"
+import NoteView from "./src/screens/NoteView";
+import * as Animatable from 'react-native-animatable';
 
 export default function App() {
+  const fadeInAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(fadeInAnim, {
+      toValue: 1,
+      duration: 500, 
+      useNativeDriver: true,
+    }).start();
+  }, [fadeInAnim]);
+
   return (
     <DarkModeProvider>
-      <AppContent />
+      <Animated.View style={{ flex: 1, opacity: fadeInAnim }}>
+        <AppContent />
+      </Animated.View>
     </DarkModeProvider>
   );
 }

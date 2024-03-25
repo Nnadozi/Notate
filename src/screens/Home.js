@@ -73,7 +73,7 @@ const Home = () => {
               }
               keyExtractor={(item) => item.desc} 
             /> :
-            <CustomText fontWeight="bold" opacity = {0.75} fontSize={20} top="35%" left="40%">NO NOTES</CustomText>
+            <CustomText fontWeight="bold" opacity = {0.25} fontSize={20} top="35%" left="40%">NO NOTES</CustomText>
           }
         </View>
       <AddButton onPress= { () => nav.navigate("CreateNote")}/>
