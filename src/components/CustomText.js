@@ -12,7 +12,7 @@ const CustomText = (props) => {
       fontWeight: fontWeight,
       fontSize: fontSize,
       position: "absolute",
-      color: isDarkModeEnabled ? "white" : props.color,
+      color: isDarkModeEnabled ? (props.altColor || "white") : props.color,
       top: top,
       left: left,
       width:width,

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, TouchableOpacity,  } from 'react-native'
 import React from 'react'
 import CustomText from '../CustomText'
 import { useDarkMode } from '../../constants/DarkModeContext'
@@ -7,7 +7,7 @@ const LongButton = (props) => {
   const {isDarkModeEnabled} = useDarkMode()
   return (
     <TouchableOpacity onPress={props.onPress} activeOpacity={0.8} style = {[styles.con,{backgroundColor:isDarkModeEnabled ? "white" : "black" }]}>
-      <CustomText color = "white" fontWeight="500" fontSize = {20}>Create Note</CustomText>
+      <CustomText altColor = "black" color = "white" fontWeight="500" fontSize = {20}>Create Note</CustomText>
     </TouchableOpacity>
   )
 }
