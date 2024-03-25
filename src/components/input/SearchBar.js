@@ -1,22 +1,30 @@
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
 import {Entypo} from "@expo/vector-icons"
+import { useDarkMode } from '../../constants/DarkModeContext'
 const SearchBar = (props) => {
+
+    const {isDarkModeEnabled} = useDarkMode()
+    
   return (
     <View style ={styles.mainCon}>
         <TextInput
         returnKeyType='done'
-        style = {styles.inputCon}
+        style = {[styles.inputCon,
+            {borderColor: isDarkModeEnabled ? "white" : "black"},
+            {color: isDarkModeEnabled ? "white" : "black"},
+        ]}
         placeholder='Search'
+        placeholderTextColor={isDarkModeEnabled ? "white" : "gray"}
         maxLength={50}
         value= {props.value}
         onChangeText={props.onChangeText}
         />
         <Entypo 
         style = {styles.glass}
-        size = {27}
+        size = {25}
         name = "magnifying-glass"
-        color = "gray"
+        color = {isDarkModeEnabled ? "white" : "black"}
          />
     </View>
   )
@@ -41,7 +49,6 @@ const styles = StyleSheet.create({
         paddingLeft:"12%",
         paddingRight:"5%",
         borderWidth:1.5,
-        borderColor:"gray"
     },
     glass:{
         position:"absolute",

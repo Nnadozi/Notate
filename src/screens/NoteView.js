@@ -1,10 +1,14 @@
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
-import React,{useEffect, useState} from 'react'
+import { SafeAreaView, StyleSheet, View } from 'react-native'
+import React, {useEffect, useState} from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { useDarkMode } from '../constants/DarkModeContext'
 import IconButton from '../components/buttons/IconButton'
 import CustomText from '../components/CustomText'
 
 const NoteView = () => {
+
+  const {isDarkModeEnabled} = useDarkMode()
+
   const nav = useNavigation()
   const route = useRoute()
   const [note,setNote] = useState({title:null,desc:null})
@@ -16,11 +20,10 @@ const NoteView = () => {
     }
   }, [route.params])
 
-
   return (
     <>
-      <SafeAreaView backgroundColor = "white"/>
-      <View className = "flex-1 justify-center items-center bg-white">
+      <SafeAreaView backgroundColor = {isDarkModeEnabled ? "black" : "white"}/>
+      <View style = {[styles.con,{backgroundColor:isDarkModeEnabled ? "black" : "white"}]}>
         <IconButton onPress = {() => nav.goBack()} size = {30} name = "arrow-left" top = "3%" left = "5%"/>
         <CustomText fontSize = {30} fontWeight = "bold" top = "10%" left = "5%">{note.title}</CustomText>
         <CustomText fontSize = {20} top = "18%" left = "5%" maxWidth = "90%">
@@ -33,4 +36,10 @@ const NoteView = () => {
 
 export default NoteView
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  con:{
+    flex:1,
+    justifyContent:"center",
+    alignItems:"center"
+  }
+})

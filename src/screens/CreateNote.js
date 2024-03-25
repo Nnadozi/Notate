@@ -3,11 +3,15 @@ import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import IconButton from '../components/buttons/IconButton'
 import LongButton from '../components/buttons/LongButton'
-import MyInput from '../components/MyInput'
+import MyInput from '../components/input/MyInput'
 import CustomText from "../components/CustomText"
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useDarkMode } from '../constants/DarkModeContext'
 
 const CreateNote = () => {
+
+  const {isDarkModeEnabled} = useDarkMode()
+
   const nav = useNavigation()
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
@@ -34,9 +38,9 @@ const CreateNote = () => {
   
   return (
     <>
-      <SafeAreaView backgroundColor="white" />
+      <SafeAreaView backgroundColor = {isDarkModeEnabled ? "black" : "white"}/>
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        <View className="flex-1 items-center justify-center bg-white">
+        <View style = {[styles.con,{backgroundColor:isDarkModeEnabled ? "black" : "white"}]}>
           <IconButton onPress={() => nav.goBack()} name="arrow-left" top="2%" left="5%" size={30} />
           <CustomText fontWeight="bold" position="absolute" top="8%" left="7%" fontSize={23}>Create Note</CustomText>
           <MyInput borderRadius={100} placeholder="Title" top="11%" height="6.5%" maxLength={50} paddingRight = "18%"
@@ -53,4 +57,10 @@ const CreateNote = () => {
 
 export default CreateNote
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  con:{
+    flex:1,
+    justifyContent:"center",
+    alignItems:"center"
+  }
+})

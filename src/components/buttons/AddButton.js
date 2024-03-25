@@ -1,10 +1,12 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import {Ionicons} from  "@expo/vector-icons"
+import { useDarkMode } from '../../constants/DarkModeContext'
 const AddButton = (props) => {
+  const {isDarkModeEnabled} = useDarkMode()
   return (
     <TouchableOpacity onPress={props.onPress} activeOpacity={0.75} style = {styles.con}>
-      <Ionicons name="add" size={30} color="white" />
+      <Ionicons name="add" size={30} color= {isDarkModeEnabled ? "black" : "white"} />
     </TouchableOpacity>
   )
 }

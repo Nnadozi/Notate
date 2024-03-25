@@ -1,19 +1,23 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import { useDarkMode } from '../constants/DarkModeContext';
 
 const CustomText = (props) => {
-  const { children, fontWeight, fontSize, top, left,color,width,maxWidth } = props; 
+
+  const {isDarkModeEnabled} = useDarkMode()
+  const { children, fontWeight, fontSize, top, left,width,maxWidth,opacity } = props; 
 
   return (
     <Text numberOfLines={props.lines} style={{
       fontWeight: fontWeight,
       fontSize: fontSize,
       position: "absolute",
-      color:color,
+      color: isDarkModeEnabled ? "white" : props.color,
       top: top,
       left: left,
       width:width,
-      maxWidth:maxWidth
+      maxWidth:maxWidth,
+      opacity:opacity,
     }}>
       {children} 
     </Text>

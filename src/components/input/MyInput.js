@@ -1,19 +1,27 @@
 import { StyleSheet, TextInput, View,Text } from 'react-native'
 import React from 'react'
-
+import { useDarkMode } from '../../constants/DarkModeContext'
+import CustomText from '../CustomText'
 const MyInput = (props) => {
+const {isDarkModeEnabled} = useDarkMode()
   return (
     <View style ={[styles.mainCon,{top:props.top,height:props.height}]}>
         <TextInput
         onChangeText={props.onChangeText}
         value = {props.value}
         returnKeyType= {props.returnKeyType}
-        style = {[styles.inputCon,{borderRadius:props.borderRadius,paddingTop:props.paddingTop,paddingRight:props.paddingRight}]}
+        style = {[styles.inputCon,{borderRadius:props.borderRadius,paddingTop:props.paddingTop,paddingRight:props.paddingRight},
+            {borderColor: isDarkModeEnabled ? "white" : "black"},
+            {color: isDarkModeEnabled ? "white" : "black"},]}
         placeholder={props.placeholder}
+        placeholderTextColor={isDarkModeEnabled ? "white" : "gray"}
         maxLength={props.maxLength}
         multiline = {props.multiline}
         />
-        {props.showLimit ? <Text style={[styles.text, { top: props.smallTop }]}>{props.length}/{props.maxLength}</Text> : null}
+        {props.showLimit ? 
+        <CustomText left = "85%" fontWeight = "500">
+            {props.length}/{props.maxLength}
+        </CustomText> : null}
     </View>
   )
 }
@@ -33,11 +41,5 @@ const styles = StyleSheet.create({
         height:"100%",
         paddingHorizontal:"5%",
         borderWidth:1.5,
-        borderColor:"gray",
     },
-    text:{
-        position:"absolute",
-        left:"85%",
-        color:"gray",
-    }
 })

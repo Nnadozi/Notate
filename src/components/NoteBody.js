@@ -3,8 +3,12 @@ import React from 'react'
 import CustomText from './CustomText'
 import IconButton from './buttons/IconButton'
 import { useNavigation } from '@react-navigation/native'
+import { useDarkMode } from '../constants/DarkModeContext'
 
 const NoteBody = (props) => {
+
+  const {isDarkModeEnabled} = useDarkMode()
+
   const nav = useNavigation()
   const alertPress = () => {
     Alert.alert(
@@ -17,15 +21,14 @@ const NoteBody = (props) => {
     );
   }
   
-
   const { height } = Dimensions.get('window');
 
   return (
-    <View style = {[styles.con,{height: height/4}]}>
+    <View style = {[styles.con,{height: height/4,borderColor:isDarkModeEnabled ? "white" : "black"}]}>
       <CustomText color = "white" fontWeight = "bold" fontSize = {23}
       position = "absolute" top = "9%" left = "5%">{props.title}</CustomText>
       <CustomText color = "white" fontSize = {16} width = "90%"
-      position = "absolute" top = "35%" left = "5%">{props.desc}</CustomText>
+      position = "absolute" top = "35%" left = "6%">{props.desc}</CustomText>
       <View style = {styles.divider}/>
       <IconButton color = "white" name = "x" size = {30} top = "8%" left = "88%" onPress = {() => alertPress()}/>
       <IconButton color = "white" name ="external-link"  size = {27} top = "8%" left = "80%" 
@@ -43,6 +46,7 @@ const styles = StyleSheet.create({
     alignItems:"center",
     backgroundColor:"black",
     borderRadius:30,
+    borderWidth:1,
     marginVertical: "2%",
     alignSelf:"center"
   },

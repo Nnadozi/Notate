@@ -1,6 +1,6 @@
 import { StyleSheet, View, SafeAreaView , FlatList,} from 'react-native'
 import React, { useEffect, useState } from 'react'
-import SearchBar from '../components/SearchBar'
+import SearchBar from '../components/input/SearchBar'
 import FormattedDate from '../constants/Date'
 import IconButton from '../components/buttons/IconButton'
 import AddButton from "../components/buttons/AddButton"
@@ -8,10 +8,11 @@ import { useNavigation} from '@react-navigation/native'
 import CustomText from '../components/CustomText'
 import NoteBody from '../components/NoteBody'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-
-//DARK MODE
+import { useDarkMode } from '../constants/DarkModeContext'
 
 const Home = () => {
+
+  const {isDarkModeEnabled} = useDarkMode()
 
   const nav = useNavigation()
   const [notes, setNotes] = useState([])
@@ -38,7 +39,6 @@ const Home = () => {
 
   const deleteNote = async (item) => {
     try {
-      console.log(await AsyncStorage.getAllKeys())
       await AsyncStorage.removeItem(`Note of ${item.id}`);
       setNotes(prevNotes => prevNotes.filter(note => note.id !== item.id));
     } catch (error) {
@@ -46,8 +46,6 @@ const Home = () => {
     }
   };
   
-  
-
   const searchQuery = (searchVal) => {
     if (!searchVal.trim()) {
       return notes;
@@ -61,8 +59,8 @@ const Home = () => {
 
   return (
     <>
-    <SafeAreaView backgroundColor = "white"/>
-    <View  className="flex-1 items-center justify-center bg-white">
+    <SafeAreaView backgroundColor = {isDarkModeEnabled ? "black" : "white"}/>
+    <View  style = {[styles.con,{backgroundColor: isDarkModeEnabled ? "black" : "white"}]}>
       <CustomText fontWeight ="bold" position = "absolute" top = "4%" fontSize = {25}>{FormattedDate}</CustomText>
       <IconButton onPress = { () => nav.openDrawer()} name = "settings" top="2%" left="3%" size = {30}/>
       <SearchBar value = {search} onChangeText = {text => setSearch(text)}/>
@@ -75,7 +73,7 @@ const Home = () => {
               }
               keyExtractor={(item) => item.desc} 
             /> :
-            <CustomText fontWeight="bold" color="gray" fontSize={20} top="35%" left="40%">NO NOTES</CustomText>
+            <CustomText fontWeight="bold" opacity = {0.75} fontSize={20} top="35%" left="40%">NO NOTES</CustomText>
           }
         </View>
       <AddButton onPress= { () => nav.navigate("CreateNote")}/>
@@ -93,6 +91,11 @@ const styles = StyleSheet.create({
     position:"absolute",
     top:"20%",
    },
+   con:{
+    justifyContent:"center",
+    alignItems:"center",
+    flex:1
+   }
 })
 
 
