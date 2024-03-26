@@ -13,6 +13,6 @@ Clone down this repository. You will need `node` and `npm` installed globally on
 
 To Visit App:
 
-Scan QR from console
+Scan QR from the console
 
-# **YOU NEED EXPO GO INSTALLED ON YOUR PHONE TO ACCESS
+# Note: You need Expo Go to be installed on your device to access
