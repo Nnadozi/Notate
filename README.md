@@ -1,5 +1,5 @@
 # Notate
-Made to learn React Native
+Simple note taking app made to learn React Native
 
 ## Pictures
 <img src="https://github.com/user-attachments/assets/5bc675d7-8b25-4bc2-9be0-a5078aeab4a7" alt="1" width="300"/>
