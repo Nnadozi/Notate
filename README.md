@@ -1,11 +1,11 @@
 # Notate
-Simple note taking app made to learn React Native
+Simple note-taking app made to learn React Native
 
 ## Pictures
-<img src="https://github.com/user-attachments/assets/5bc675d7-8b25-4bc2-9be0-a5078aeab4a7" alt="1" width="300"/>
-<img src="https://github.com/user-attachments/assets/4786f340-3fa9-4e34-9d50-0e12c7fd04ce" alt="2" width="300"/>
-<img src="https://github.com/user-attachments/assets/6f885995-a153-49da-8be9-31761893aae8" alt="3" width="300"/>
-<img src="https://github.com/user-attachments/assets/84f58fad-a222-45b6-a5e3-eef4105212fa" alt="4" width="300"/>
+<img src="https://github.com/user-attachments/assets/5bc675d7-8b25-4bc2-9be0-a5078aeab4a7" alt="1" width="200"/>
+<img src="https://github.com/user-attachments/assets/4786f340-3fa9-4e34-9d50-0e12c7fd04ce" alt="2" width="200"/>
+<img src="https://github.com/user-attachments/assets/6f885995-a153-49da-8be9-31761893aae8" alt="3" width="200"/>
+<img src="https://github.com/user-attachments/assets/84f58fad-a222-45b6-a5e3-eef4105212fa" alt="4" width="200"/>
 
 ## Installation and Setup Instructions
 
