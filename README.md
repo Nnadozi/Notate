@@ -1,6 +1,9 @@
 # Notate
 Simple note-taking app made to learn React Native
 
+## Built With
+React Native, Expo, JavaScript
+
 ## Pictures
 <img src="https://github.com/user-attachments/assets/5bc675d7-8b25-4bc2-9be0-a5078aeab4a7" alt="1" width="200"/>
 <img src="https://github.com/user-attachments/assets/4786f340-3fa9-4e34-9d50-0e12c7fd04ce" alt="2" width="200"/>
