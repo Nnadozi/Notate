@@ -1,6 +1,13 @@
 # Notate
 Simple note-taking app made to learn React Native
 
+## Features
+- Create / Delete notes
+- Expansion window
+- Search query
+- Local storage
+- Dark mode
+
 ## Built With
 React Native, Expo, JavaScript
 
