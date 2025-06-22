@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
         justifyContent:"center",
         alignItems:"center",
         position:"absolute",
-        top:"89s%",
-        left:"82%",
+        bottom:"5%",
+        right:"5%",
         opacity:0.5
     }
 })

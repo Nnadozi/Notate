@@ -21,5 +21,6 @@ export default IconButton
 const styles = StyleSheet.create({
     con:{
         position:"absolute",
+        zIndex: 1,
     }
 })

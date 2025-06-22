@@ -5,7 +5,7 @@ import { useDarkMode } from '../constants/DarkModeContext';
 const CustomText = (props) => {
 
   const {isDarkModeEnabled} = useDarkMode()
-  const { children, fontWeight, fontSize, top, left,width,maxWidth,opacity } = props; 
+  const { children, fontWeight, fontSize, top, left, width, maxWidth, opacity, textAlign } = props; 
 
   return (
     <Text numberOfLines={props.lines} style={{
@@ -15,9 +15,10 @@ const CustomText = (props) => {
       color: isDarkModeEnabled ? (props.altColor || "white") : props.color,
       top: top,
       left: left,
-      width:width,
-      maxWidth:maxWidth,
-      opacity:opacity,
+      width: width,
+      maxWidth: maxWidth,
+      opacity: opacity,
+      textAlign: textAlign || 'left',
     }}>
       {children} 
     </Text>

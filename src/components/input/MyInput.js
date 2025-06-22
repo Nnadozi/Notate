@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     mainCon:{
         justifyContent:"center",
         alignItems:"center",     
-        width:"90%",
+        width:"85%",
         position:"absolute",
         marginVertical:"5%",
     },

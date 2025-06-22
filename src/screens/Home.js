@@ -34,8 +34,7 @@ const Home = () => {
     };
   
     fetchNotes();
-  }, [AsyncStorage.getAllKeys()]); 
-  
+  }, []);
 
   const deleteNote = async (item) => {
     try {
@@ -61,8 +60,8 @@ const Home = () => {
     <>
     <SafeAreaView backgroundColor = {isDarkModeEnabled ? "black" : "white"}/>
     <View  style = {[styles.con,{backgroundColor: isDarkModeEnabled ? "black" : "white"}]}>
-      <CustomText fontWeight ="bold" position = "absolute" top = "4%" fontSize = {25}>{FormattedDate}</CustomText>
-      <IconButton onPress = { () => nav.openDrawer()} name = "settings" top="2%" left="3%" size = {30}/>
+      <CustomText fontWeight ="bold" position = "absolute" top = "8%" left="0%" width="100%" fontSize = {25} textAlign="center">{FormattedDate}</CustomText>
+      <IconButton onPress = { () => nav.openDrawer()} name = "settings" top="6%" left="5%" size = {30}/>
       <SearchBar value = {search} onChangeText = {text => setSearch(text)}/>
       <View style={styles.noteContainer}>
           {notes.length > 0 ?
@@ -71,7 +70,7 @@ const Home = () => {
               renderItem={({ item }) =>
                 <NoteBody title={item.title} desc={item.description} handleDelete = {() => deleteNote(item)} />
               }
-              keyExtractor={(item) => item.desc} 
+              keyExtractor={(item) => item.id}
             /> :
             <CustomText fontWeight="bold" opacity = {0.25} fontSize={20} top="35%" left="40%">NO NOTES</CustomText>
           }
